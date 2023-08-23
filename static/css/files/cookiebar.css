@@ -1,0 +1,44 @@
+body#top .ccm-widget--text::after {
+    bottom: 0;
+}
+body#top .ccm-widget--buttons button {
+    text-shadow: none;
+}
+body#top .ccm-widget--buttons button.ccm--button-primary {
+    font-weight: 600;
+}
+@media only screen and (max-width: 767px) {
+	.badge .info-icon {
+		right: 0;
+		top: 2px;
+		width: 10px;
+		height: 10px;
+		font-size: 9px;
+	}
+}
+@media only screen and (min-width: 768px) {
+	.badge .info-icon {
+		top: -45px;
+	}
+}
+@media only screen and (min-width: 1024px) {
+	.badge .info-icon {
+		top: -45px;
+	}
+}
+@media screen and (max-width: 1279px) {
+    .desktop-only.later {
+		display: none;
+	}
+}
+@media only screen and (min-width: 1280px) {
+    .desktop-only.later {
+		display: block;
+	}
+}
+
+.ccm-widget--buttons,
+.button.ccm--save-settings[data-full-consent="true"],
+.ccm-widget--buttons button.ccm--save-settings[data-full-consent="true"] {
+	order: 3 !important;
+}

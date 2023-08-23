@@ -1,0 +1,135 @@
+{% extends 'management/base.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-body" style="min-height: 600px !important;">
+                    <br>
+
+                    <h2 style="margin-bottom: 25px;"> Profilim</h2>
+
+
+                    <div class="tab-content">
+                        <div class="tab-pane p-20 active" id="general" role="tabpanel">
+                            <form id="profile_form" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Ad</label>
+                                            <div>
+                                                <input type="text" name="first_name" maxlength="64" class="form-control"
+                                                       required="" value="{{ request.user.first_name }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Soyad</label>
+                                            <div>
+                                                <input type="text" name="last_name" maxlength="64" class="form-control"
+                                                       value="{{ request.user.last_name }}" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Ünvan</label>
+                                            <div>
+                                                <input type="text" name="job_title" maxlength="100" class="form-control"
+                                                       value="{{ request.user.job_title }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">E-Posta</label>
+                                            <div>
+                                                <input type="email" name="email" maxlength="100" class="form-control"
+                                                       value="{{ request.user.email }}" readonly="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Şifre</label>
+                                            <div>
+                                                <input type="password" name="password" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Şifre Tekrar</label>
+                                            <div>
+                                                <input type="password" name="password2" class="form-control"
+                                                       required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Profil Resmi</label>
+                                            <div>
+                                                {% if request.user.avatar %}
+                                                      <img src="/media/{{ request.user.avatar }}" alt="user"
+                                     style="width: 35px; height: 35px;">
+                                                {% else %}
+                                                    <img src="/static/management/images/icons/no-image.png" width="100"
+                                                         alt="user"
+                                                         class="">
+                                                {% endif %}
+                                                <br>
+                                                <br>
+                                                <input type="file" name="avatar" class="form-control" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row" style="margin-top: 20px;">
+                                                    <div class="col-md-12">
+                                                        <a href="{{ request.META.HTTP_REFERER }}" id="btnCancel"
+                                                           class="btn waves-effect waves-light btn-secondary"
+                                                           style="float: right; width: 140px; margin: 5px;"> İptal </a>
+                                                        <button type="submit" id="btnSave"
+                                                                class="btn waves-effect waves-light btn-primary"
+                                                                style="float: right; margin: 5px; width: 140px;">
+                                                            Kaydet
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block footer %}{% endblock %}
